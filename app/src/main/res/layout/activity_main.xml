@@ -1,18 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:background="@drawable/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/aqilayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/AQ_currentlocation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="serif"
+                android:text="Current Location"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/round_stroke">
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/aq_temp_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Temperature"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:fontFamily="serif"
+                        android:textStyle="bold">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/aq_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Temperature"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:fontFamily="serif"
+                        android:textStyle="italic"
+                        android:background="@drawable/stroke">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/aq_humd_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Humidity"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/aq_humd"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Temperature"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:fontFamily="serif"
+                        android:textStyle="italic"
+                        android:background="@drawable/stroke">
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="PM2.5"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="PM2.5"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:background="@drawable/stroke"
+                        >
+                    </TextView>
+                    </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:text="PM2.5"
+                                android:textSize="20dp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                >
+                            </TextView>
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:text="PM2.5"
+                                android:textSize="20dp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:background="@drawable/stroke">
+
+                            </TextView>
+                        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="PM2.5"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold">
+                        </TextView>
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:text="PM2.5"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:background="@drawable/stroke">
+
+                        </TextView>
+                    </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
