@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">AirQuality</string>
-    <string name="txtview_smartcity" translatable="false">Welcome to SmartCity</string>
+    <string name="txtview_smartcity" translatable="false">Welcome to AirQuality</string>
     <string name="email">Email</string>
     <string name="txtedit_hint_password">Password</string>
     <string name="remember_me">Remember me</string>
-    <string name="forgetpass"><u>Forget Pass ?</u></string>
     <string name="register">register</string>
     <string name="bnttxtlogin">Login</string>
     <string name="sign_in_with_social_account">Sign in with social account</string>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1059996732152",
+    "firebase_url": "https://aquality-a31c0-default-rtdb.firebaseio.com",
+    "project_id": "aquality-a31c0",
+    "storage_bucket": "aquality-a31c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059996732152:android:65a936584dab243597c90d",
+        "android_client_info": {
+          "package_name": "ca.cheems.iotproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059996732152-lffi57dqjnobv7rnl8k46gdju3f86joc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACLYv2i1RD0q6ZpPL6F9vPsLtLDH5uTK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059996732152-lffi57dqjnobv7rnl8k46gdju3f86joc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

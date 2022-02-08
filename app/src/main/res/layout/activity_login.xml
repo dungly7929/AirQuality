@@ -63,13 +63,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/remember_me"
         android:textStyle="bold" />
-    <TextView
-        android:padding="5dp"
-        android:id="@+id/txtforgetpass"
-        android:layout_marginLeft="80dp"
-        android:text="@string/forgetpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +73,7 @@
 
         <Button
             android:id="@+id/bntregister"
-            android:layout_width="104dp"
+            android:layout_width="115dp"
             android:layout_height="35dp"
             android:layout_marginLeft="70dp"
             android:background="@drawable/bg_btn"
