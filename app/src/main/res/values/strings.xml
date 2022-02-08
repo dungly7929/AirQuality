@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">AirQuality</string>
+    <string name="txtview_smartcity" translatable="false">Welcome to SmartCity</string>
+    <string name="email">Email</string>
+    <string name="txtedit_hint_password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgetpass"><u>Forget Pass ?</u></string>
+    <string name="register">register</string>
+    <string name="bnttxtlogin">Login</string>
+    <string name="sign_in_with_social_account">Sign in with social account</string>
+    <color name="txtedit_bg">#268ED5</color>
+    <string name="register_textview_reg">Register</string>
+    <string name="fullnamereg">Full name</string>
+    <string name="passwordreg">Password</string>
+    <string name="emailreg">Email</string>
+    <string name="phone_number_reg">Phone Number</string>
 </resources>
