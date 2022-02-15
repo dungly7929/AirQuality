@@ -69,30 +69,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <View
+            android:layout_width="37dp"
+            android:layout_height="1dp"/>
         <Button
             android:id="@+id/bntregister"
-            android:layout_width="115dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_btn"
             android:text="@string/register"
             android:textAlignment="center"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+                <View
+                    android:layout_width="37dp"
+                    android:layout_height="1dp"/>
         <Button
             android:id="@+id/bntlogin"
-            android:layout_width="104dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_btn"
             android:text="@string/bnttxtlogin"
             android:textAlignment="center"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <View
+            android:layout_width="37dp"
+            android:layout_height="1dp"/>
     </LinearLayout>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="10dp"/>
     <TextView
         android:id="@+id/txtviewlogin2"
         android:layout_width="match_parent"
@@ -104,6 +114,9 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="10dp"/>
 
     <ImageButton
         android:id="@+id/imgbntglogin"
