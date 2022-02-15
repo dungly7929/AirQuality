@@ -1,16 +1,20 @@
 package ca.cheems.iotproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button pm25, tvoc, eCO2;
+    ImageView face;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 openeCO2activity();
             }
         });
+
+        face = findViewById(R.id.face_indicator);
     }
 
     public void openeCO2activity(){
@@ -56,5 +62,37 @@ public class MainActivity extends AppCompatActivity {
     public void openPM25activity(){
         Intent intent = new Intent(this, pm25Activity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.app_name)
+                    .setCancelable(false)
+                    .setMessage("Do you really want to exit?")
+                    .setPositiveButton("Yes", (dialog, which) -> finishAffinity())
+                    .setNegativeButton("No", (dialog, which) -> dialog.cancel())
+                    .create()
+                    .show();
+            return true;
+        }
+        return super.onKeyLongPress(keyCode, event);
+    }
+
+    //Back button pressed
+    @Override
+    public void onBackPressed()
+    {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.app_name)
+                .setCancelable(false)
+                .setMessage("Do you really want to exit?")
+                .setPositiveButton("Yes", (dialog, which) -> finishAffinity())
+                .setNegativeButton("No", (dialog, which) -> dialog.cancel())
+                .create()
+                .show();
     }
 }
