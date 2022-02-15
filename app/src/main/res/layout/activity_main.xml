@@ -43,16 +43,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/aq_temp_banner"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="Temperature"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:fontFamily="serif"
-                        android:textStyle="bold">
-                    </TextView>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="112dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/hot">
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/aq_temp_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Temperature"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:fontFamily="serif"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:layout_weight="1">
+                        </TextView>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/aq_temp"
@@ -62,33 +79,51 @@
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:fontFamily="serif"
-                        android:textStyle="italic">
+                        android:textStyle="italic"
+                        android:textAlignment="center">
                     </TextView>
 
-                    <TextView
-                        android:id="@+id/aq_humd_banner"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="Humidity"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:fontFamily="serif"
-                        android:textStyle="bold"
-                        >
-                    </TextView>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="112dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/humidity">
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/aq_humd_banner"
+                            android:layout_height="50dp"
+                            android:layout_width="match_parent"
+                            android:text="Humidity"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:fontFamily="serif"
+                            android:textStyle="bold"
+                            android:textAlignment="center"
+                            android:layout_weight="1">
+                        </TextView>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/aq_humd"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="Temperature"
+                        android:text="humid"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:fontFamily="serif"
-                        android:textStyle="italic">
+                        android:textStyle="italic"
+                        android:textAlignment="center">
                     </TextView>
-                </LinearLayout>
 
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -111,29 +146,35 @@
                                 <View
                                     android:layout_width="3dp"
                                     android:layout_height="201dp"/>
-                                <ImageButton
+                                <Button
+                                    android:id="@+id/tvocbutton"
                                     android:layout_width="201dp"
-                                    android:layout_height="201dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="tVOC"
                                     android:textSize="20dp"
-                                    android:textColor="@color/black"
+                                    android:textColor="@color/white"
                                     android:textStyle="bold"
+                                    android:textAlignment="center"
                                     android:layout_weight="1"
-                                    android:src="@drawable/greengas"
+                                    android:drawableBottom="@drawable/greengas"
+                                    android:backgroundTint="#013220"
                                     >
-                                </ImageButton>
+                                </Button>
                                 <View
                                     android:layout_width="3dp"
                                     android:layout_height="201dp"/>
-                                <ImageButton
+                                <Button
+                                    android:id="@+id/eCO2button"
                                     android:layout_width="201dp"
-                                    android:layout_height="201dp"
+                                    android:layout_height="wrap_content"
                                     android:text="ECO2"
                                     android:textSize="20dp"
-                                    android:textColor="@color/black"
+                                    android:textColor="@color/white"
                                     android:textStyle="bold"
                                     android:layout_weight="1"
-                                    android:src="@drawable/eco2">
-                                </ImageButton>
+                                    android:drawableBottom="@drawable/eco2"
+                                    android:backgroundTint="#202A44">
+                                </Button>
                                 <View
                                     android:layout_width="3dp"
                                     android:layout_height="201dp"/>
@@ -143,10 +184,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <View
-        android:layout_width="1dp"
-        android:layout_height="3dp"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -157,16 +195,18 @@
             android:layout_width="3dp"
             android:layout_height="201dp"
             />
-        <ImageButton
+        <Button
+            android:id="@+id/pm25button"
             android:layout_width="405dp"
-            android:layout_height="201dp"
+            android:layout_height="wrap_content"
             android:text="PM2.5"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:src="@drawable/dust">
-        </ImageButton>
+            android:backgroundTint="@color/black"
+            android:drawableBottom="@drawable/dust">
+        </Button>
 
         <View
             android:layout_width="3dp"

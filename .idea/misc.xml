@@ -11,9 +11,12 @@
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/divider.xml" value="0.164" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/round_stroke.xml" value="0.164" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/stroke.xml" value="0.164" />
+        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_eco2.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_login.xml" value="0.13095238095238096" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_pm25.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_register.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_tvoc.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/fragment_main.xml" value="0.33469202898550726" />
       </map>
     </option>
