@@ -62,8 +62,7 @@
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:fontFamily="serif"
-                        android:textStyle="italic"
-                        android:background="@drawable/stroke">
+                        android:textStyle="italic">
                     </TextView>
 
                     <TextView
@@ -86,8 +85,7 @@
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:fontFamily="serif"
-                        android:textStyle="italic"
-                        android:background="@drawable/stroke">
+                        android:textStyle="italic">
                     </TextView>
                 </LinearLayout>
 
@@ -96,86 +94,88 @@
         </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:text="PM2.5"
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        >
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:text="PM2.5"
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:background="@drawable/stroke"
-                        >
-                    </TextView>
-                    </LinearLayout>
-
-                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:text="PM2.5"
-                                android:textSize="20dp"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
+                            android:orientation="vertical">
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="3dp"
+                        />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
                                 >
-                            </TextView>
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:text="PM2.5"
-                                android:textSize="20dp"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-                                android:background="@drawable/stroke">
+                                <View
+                                    android:layout_width="3dp"
+                                    android:layout_height="201dp"/>
+                                <ImageButton
+                                    android:layout_width="201dp"
+                                    android:layout_height="201dp"
+                                    android:textSize="20dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/greengas"
+                                    >
+                                </ImageButton>
+                                <View
+                                    android:layout_width="3dp"
+                                    android:layout_height="201dp"/>
+                                <ImageButton
+                                    android:layout_width="201dp"
+                                    android:layout_height="201dp"
+                                    android:text="ECO2"
+                                    android:textSize="20dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/eco2">
+                                </ImageButton>
+                                <View
+                                    android:layout_width="3dp"
+                                    android:layout_height="201dp"/>
+                            </LinearLayout>
 
-                            </TextView>
-                        </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <View
+        android:layout_width="1dp"
+        android:layout_height="3dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
 
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:text="PM2.5"
-                            android:textSize="20dp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold">
-                        </TextView>
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:text="PM2.5"
-                            android:textSize="20dp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:background="@drawable/stroke">
+        <View
+            android:layout_width="3dp"
+            android:layout_height="201dp"
+            />
+        <ImageButton
+            android:layout_width="405dp"
+            android:layout_height="201dp"
+            android:text="PM2.5"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:src="@drawable/dust">
+        </ImageButton>
 
-                        </TextView>
-                    </LinearLayout>
+        <View
+            android:layout_width="3dp"
+            android:layout_height="201dp"
+            />
+    </LinearLayout>
+</LinearLayout>
 
-        </LinearLayout>
+
+                </LinearLayout>
     </LinearLayout>
 </ScrollView>
