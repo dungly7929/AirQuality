@@ -161,7 +161,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:backgroundTint="#013220"
-                                    android:drawableBottom="@drawable/greengas"
+                                    android:drawableBottom="@drawable/button_affect_tvoc"
                                     android:fontFamily="serif"
                                     android:text="tVOC"
                                     android:textAlignment="center"
@@ -179,7 +179,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:backgroundTint="#202A44"
-                                    android:drawableBottom="@drawable/eco2"
+                                    android:drawableBottom="@drawable/button_affect_eco2"
                                     android:text="eCO2"
                                     android:textAllCaps="false"
                                     android:textColor="@color/white"
@@ -215,7 +215,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:backgroundTint="@color/black"
-            android:drawableBottom="@drawable/dust">
+            android:drawableBottom="@drawable/button_affect_pm25">
         </Button>
 
         <View
