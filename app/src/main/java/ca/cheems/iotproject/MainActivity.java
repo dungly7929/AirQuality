@@ -1,5 +1,6 @@
 package ca.cheems.iotproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +13,19 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     Button pm25, tvoc, eCO2;
     ImageView face;
+    TextView temperature;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +59,22 @@ public class MainActivity extends AppCompatActivity {
 
         //The face imageview will change according to the level of
         face = findViewById(R.id.face_indicator);
+
+        temperature = findViewById(R.id.aq_temp);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                double temp = dataSnapshot.child("temp").getValue(double.class);
+                temperature.setText(String.valueOf(temp));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void openeCO2activity(){
@@ -66,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, pm25Activity.class);
         startActivity(intent);
     }
+
+
+
+
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event)
