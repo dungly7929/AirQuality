@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button pm25, tvoc, eCO2;
     ImageView face;
-    TextView temperature;
+    TextView temperature, humid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +61,22 @@ public class MainActivity extends AppCompatActivity {
         face = findViewById(R.id.face_indicator);
 
         temperature = findViewById(R.id.aq_temp);
+        humid = findViewById(R.id.aq_humd);
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 double temp = dataSnapshot.child("temp").getValue(double.class);
-                temperature.setText(String.valueOf(temp));
+                temperature.setText(String.valueOf(temp) +" °C");
+                double humd = dataSnapshot.child("humid").getValue(double.class);
+                humid.setText(String.valueOf(humd) + " %");
+                double voc = dataSnapshot.child("tvoc").getValue(double.class);
+                tvoc.setText(String.valueOf(voc));
+                double pm = dataSnapshot.child("pm25").getValue(double.class);
+                pm25.setText(String.valueOf(pm));
+                double co2 = dataSnapshot.child("eco2").getValue(double.class);
+                eCO2.setText(String.valueOf(co2));
             }
 
             @Override
