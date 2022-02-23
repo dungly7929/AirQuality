@@ -1,11 +1,16 @@
 package ca.cheems.iotproject;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -24,8 +29,9 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     Button pm25, tvoc, eCO2;
-    ImageView face;
+    ImageView face, temp_pic;
     TextView temperature, humid;
+    double temp, humd, voc, pm, co2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +73,36 @@ public class MainActivity extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                double temp = dataSnapshot.child("temp").getValue(double.class);
+                temp = dataSnapshot.child("temp").getValue(double.class);
                 temperature.setText(String.valueOf(temp) +" °C");
-                double humd = dataSnapshot.child("humid").getValue(double.class);
+                humd = dataSnapshot.child("humid").getValue(double.class);
                 humid.setText(String.valueOf(humd) + " %");
-                double voc = dataSnapshot.child("tvoc").getValue(double.class);
-                tvoc.setText(String.valueOf(voc));
-                double pm = dataSnapshot.child("pm25").getValue(double.class);
-                pm25.setText(String.valueOf(pm));
-                double co2 = dataSnapshot.child("eco2").getValue(double.class);
-                eCO2.setText(String.valueOf(co2));
+                voc = dataSnapshot.child("tvoc").getValue(double.class);
+                tvoc.setText(String.valueOf(voc) + " mg/m3");
+                pm = dataSnapshot.child("pm25").getValue(double.class);
+                pm25.setText(String.valueOf(pm) + " μg/m3");
+                co2 = dataSnapshot.child("eco2").getValue(double.class);
+                eCO2.setText(String.valueOf(co2) + " mEq/L");
+
+                //Change face due to the air quality condition
+               /* face = findViewById(R.id.face_indicator);
+                if (voc < 47 && co2 < 705){
+                    face.setImageResource(R.drawable.happy);
+                }else if(voc >= 70 && voc < 90 && co2 >= 800 && co2 >= 900){
+                    face.setImageResource(R.drawable.worry);
+                }else if (voc >= 200 && voc < 300 && co2 >= 1000 && co2 < 1200){
+                    face.setImageResource(R.drawable.angry);
+                }
+                */
+
+                temp_pic = findViewById(R.id.temp_pic);
+                if (temp <= 10){
+                    temp_pic.setImageResource(R.drawable.cold);
+                }
+                else{
+                    temp_pic.setImageResource(R.drawable.hot);
+                }
+
             }
 
             @Override
@@ -84,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 

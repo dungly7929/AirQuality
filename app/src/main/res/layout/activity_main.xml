@@ -63,7 +63,8 @@
                             android:layout_width="112dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/hot">
+                            android:src="@drawable/hot"
+                            android:id="@+id/temp_pic">
                         </ImageView>
 
                         <TextView
