@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pm25 = (Button) findViewById(R.id.pm25button);
-        tvoc = (Button) findViewById(R.id.tvocbutton);
-        eCO2 = (Button) findViewById(R.id.eCO2button);
+       getID();
 
         pm25.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,45 +61,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //The face imageview will change according to the level of
-        face = findViewById(R.id.face_indicator);
 
-        temperature = findViewById(R.id.aq_temp);
-        humid = findViewById(R.id.aq_humd);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 temp = dataSnapshot.child("temp").getValue(double.class);
-                temperature.setText(String.valueOf(temp) +" °C");
                 humd = dataSnapshot.child("humid").getValue(double.class);
-                humid.setText(String.valueOf(humd) + " %");
                 voc = dataSnapshot.child("tvoc").getValue(double.class);
-                tvoc.setText(String.valueOf(voc) + " mg/m3");
                 pm = dataSnapshot.child("pm25").getValue(double.class);
-                pm25.setText(String.valueOf(pm) + " μg/m3");
                 co2 = dataSnapshot.child("eco2").getValue(double.class);
-                eCO2.setText(String.valueOf(co2) + " mEq/L");
 
-                //Change face due to the air quality condition
-               /* face = findViewById(R.id.face_indicator);
-                if (voc < 47 && co2 < 705){
-                    face.setImageResource(R.drawable.happy);
-                }else if(voc >= 70 && voc < 90 && co2 >= 800 && co2 >= 900){
-                    face.setImageResource(R.drawable.worry);
-                }else if (voc >= 200 && voc < 300 && co2 >= 1000 && co2 < 1200){
-                    face.setImageResource(R.drawable.angry);
-                }
-                */
+                aq_levels_indicators();
+                setTextOnScreen();
+                changeTempPic();
 
-                temp_pic = findViewById(R.id.temp_pic);
-                if (temp <= 10){
-                    temp_pic.setImageResource(R.drawable.cold);
-                }
-                else{
-                    temp_pic.setImageResource(R.drawable.hot);
-                }
+
 
             }
 
@@ -111,6 +87,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void changeTempPic(){
+        if (temp <= 10){
+            temp_pic.setImageResource(R.drawable.cold);
+        }
+        else{
+            temp_pic.setImageResource(R.drawable.hot);
+        }
+    }
+
+    public void getID(){
+        pm25 = (Button) findViewById(R.id.pm25button);
+        tvoc = (Button) findViewById(R.id.tvocbutton);
+        eCO2 = (Button) findViewById(R.id.eCO2button);
+        temp_pic = (ImageView) findViewById(R.id.temp_pic);
+
+        //The face imageview will change according to the level of
+        face = findViewById(R.id.face_indicator);
+        temperature = findViewById(R.id.aq_temp);
+        humid = findViewById(R.id.aq_humd);
+    }
+
+    public void setTextOnScreen(){
+        temperature.setText(String.valueOf(temp) +" °C");
+        humid.setText(String.valueOf(humd) + " %");
+        tvoc.setText(String.valueOf(voc) + " ppb");
+        pm25.setText(String.valueOf(pm) + " μg/m3");
+        eCO2.setText(String.valueOf(co2) + " ppm");
+    }
+
+    public void aq_levels_indicators(){
+        //Change face due to the air quality condition
+                if (voc <= 250){
+                    face.setImageResource(R.drawable.happy);
+                }else if(voc > 250 && voc <= 2000){
+                    face.setImageResource(R.drawable.worry);
+                }else{
+                    face.setImageResource(R.drawable.angry);
+                }
 
     }
 
