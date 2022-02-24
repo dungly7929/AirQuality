@@ -3,7 +3,7 @@
     android:dither="true">
     <item
         android:state_window_focused="false"
-        android:drawable="@drawable/eco2"/>
+        android:drawable="@drawable/co2"/>
     <item
         android:state_pressed="true"
         android:drawable="@drawable/co2_pressed"/>
@@ -11,5 +11,5 @@
         android:state_focused="true"
         android:drawable="@drawable/co2_pressed"/>
     <item
-        android:drawable="@drawable/eco2"/>
+        android:drawable="@drawable/co2"/>
 </selector>

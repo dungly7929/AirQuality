@@ -3,13 +3,16 @@
     android:dither="true">
     <item
         android:state_window_focused="false"
-        android:drawable="@drawable/greengas"/>
+        android:drawable="@drawable/greengas"
+        />
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/greengas_pressed"/>
+        android:drawable="@drawable/greengas_pressed"
+        />
     <item
         android:state_focused="true"
-        android:drawable="@drawable/greengas_pressed"/>
+        android:drawable="@drawable/greengas_pressed"
+        />
     <item
         android:drawable="@drawable/greengas"/>
 </selector>
