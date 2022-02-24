@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
         if (temp <= 10){
             temp_pic.setImageResource(R.drawable.cold);
         }
+        else if (temp > 10 && temp <= 20){
+            temp_pic.setImageResource(R.drawable.hot_medium);
+        }
         else{
             temp_pic.setImageResource(R.drawable.hot);
         }
@@ -134,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
     public void setTextOnScreen(){
         temperature.setText(String.valueOf(temp) +" °C");
         humid.setText(String.valueOf(humd) + " %");
-        tvoc.setText("tVOC = "+ String.valueOf(voc) + " ppb");
-        pm25.setText("PM2.5 = " +String.valueOf(pm) + " μg/m3");
-        eCO2.setText("eCO2 = " +String.valueOf(co2) + " ppm");
+        tvoc.setText("tVOC \n"+ String.valueOf(voc) + " ppb");
+        pm25.setText("PM2.5 \n" +String.valueOf(pm) + " μg/m3");
+        eCO2.setText("eCO2 \n" +String.valueOf(co2) + " ppm");
     }
 
     public void aq_levels_indicators(){
