@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     android:background="@drawable/background3">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+        <Spinner
+            android:id="@+id/spiner"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp">
@@ -194,7 +203,7 @@
                                     android:shadowDx="2"
                                     android:shadowDy="2"
                                     android:shadowRadius="5"
-                                    android:text="tVOC"
+                                    android:text="tO3"
                                     android:textAlignment="center"
                                     android:textAllCaps="false"
                                     android:textColor="@color/white"
@@ -247,22 +256,43 @@
             android:layout_height="210dp"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/pm25button"
-            android:layout_width="405dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_affect_pm25"
-            android:text="PM2.5"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:fontFamily="@font/courier_prime_bold"
-            android:shadowColor="#000000"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="5"></androidx.appcompat.widget.AppCompatButton>
-
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pm25button"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_affect_pm25"
+        android:text="PM2.5"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/courier_prime_bold"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"></androidx.appcompat.widget.AppCompatButton>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pm03button"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_affect_pm25"
+        android:text="O3"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/courier_prime_bold"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="5"></androidx.appcompat.widget.AppCompatButton>
+</LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

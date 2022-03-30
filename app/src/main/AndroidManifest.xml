@@ -16,15 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AirQuality">
+        <activity android:name=".PM25Activity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".eCO2Activity"
             android:exported="false" />
         <activity
-            android:name=".tvocActivity"
-            android:exported="false" />
-        <activity
-            android:name=".pm25Activity"
+            android:name=".O3Activity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
