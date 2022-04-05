@@ -1,5 +1,6 @@
 package ca.cheems.iotproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,22 +25,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button pm25, tvoc, eCO2,O3;
+    Button pm25, tvoc, eCO2;
     ImageView face, temp_pic;
     TextView temperature, humid,temp_ban, humid_ban, location;
-    double temp, humd, voc, pm, co2,o3;
+    double temp, humd, voc, pm, co2;
     LinearLayout top;
-    Spinner spinner;
-    String tokens = "335c6bfed754d30c7a80d76cd33f15a76c0f15c1&fbclid=IwAR2RH7PBaTGKbNz5CBhMFL5743EHy9Hu4QifLGiXhkitCPZF86-5nZ150pc";
-    String url ="https://api.waqi.info/feed/";
-    RequestQueue requestQueue;
-    private  String json="";
 
 
     @Override
@@ -50,25 +51,24 @@ public class MainActivity extends AppCompatActivity {
        getID();
        buttonPress();
 
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
-//        ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                temp = dataSnapshot.child("temp").getValue(double.class);
-//                humd = dataSnapshot.child("humid").getValue(double.class);
-//                voc = dataSnapshot.child("tvoc").getValue(double.class);
-//                pm = dataSnapshot.child("pm25").getValue(double.class);
-//                co2 = dataSnapshot.child("eco2").getValue(double.class);
-//
-//                aq_levels_indicators();
-//                setTextOnScreen();
-//                changeTempPic();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//            }
-//        });
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                temp = dataSnapshot.child("temp").getValue(double.class);
+                humd = dataSnapshot.child("humid").getValue(double.class);
+                voc = dataSnapshot.child("tvoc").getValue(double.class);
+                co2 = dataSnapshot.child("eco2").getValue(double.class);
+
+               aq_levels_indicators();
+               setTextOnScreen();
+               changeTempPic();
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
+           }
+      });
 
     }
 
@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
         //The face imageview will change according to the level of
         face =(ImageView) findViewById(R.id.face_indicator);
+
         //temp and humidity
         temperature =(TextView) findViewById(R.id.aq_temp);
         humid = (TextView)  findViewById(R.id.aq_humd);
-        top = (LinearLayout) findViewById(R.id.aqilayout);
         temp_ban = (TextView) findViewById(R.id.aq_temp_banner);
         humid_ban = (TextView) findViewById(R.id.aq_humd_banner);
 
@@ -118,9 +118,7 @@ public class MainActivity extends AppCompatActivity {
         temperature.setText(String.valueOf(temp) +" °C");
         humid.setText(String.valueOf(humd) + " %");
         tvoc.setText("tVOC \n"+ String.valueOf(voc) + " ppb");
-        pm25.setText("PM2.5 \n" +String.valueOf(pm) + " μg/m3");
         eCO2.setText("eCO2 \n" +String.valueOf(co2) + " ppm");
-        O3.setText("O3 \n" +String.valueOf(o3) + " ppm");
     }
 
     public void aq_levels_indicators(){
