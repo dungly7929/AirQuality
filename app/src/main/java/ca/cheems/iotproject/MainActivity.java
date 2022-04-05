@@ -36,9 +36,9 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button pm25, tvoc, eCO2;
+    Button pm25, tvoc, eCO2,O3;
     ImageView face, temp_pic;
-    TextView temperature, humid,temp_ban, humid_ban, location;
+    TextView temperature, humid,temp_ban, humid_ban;
     double temp, humd, voc, pm, co2;
     LinearLayout top;
 
@@ -51,24 +51,25 @@ public class MainActivity extends AppCompatActivity {
        getID();
        buttonPress();
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
-        ref.addValueEventListener(new ValueEventListener() {
+       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Sensorvalue");
+       ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                temp = dataSnapshot.child("temp").getValue(double.class);
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               temp = dataSnapshot.child("temp").getValue(double.class);
                 humd = dataSnapshot.child("humid").getValue(double.class);
                 voc = dataSnapshot.child("tvoc").getValue(double.class);
-                co2 = dataSnapshot.child("eco2").getValue(double.class);
+               pm = dataSnapshot.child("pm25").getValue(double.class);
+               co2 = dataSnapshot.child("eco2").getValue(double.class);
 
-               aq_levels_indicators();
-               setTextOnScreen();
-               changeTempPic();
+                aq_levels_indicators();
+                setTextOnScreen();
+                changeTempPic();
            }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError databaseError) {
-           }
-      });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
     }
 
@@ -105,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
         //The face imageview will change according to the level of
         face =(ImageView) findViewById(R.id.face_indicator);
-
         //temp and humidity
         temperature =(TextView) findViewById(R.id.aq_temp);
         humid = (TextView)  findViewById(R.id.aq_humd);
+        top = (LinearLayout) findViewById(R.id.aqilayout);
         temp_ban = (TextView) findViewById(R.id.aq_temp_banner);
         humid_ban = (TextView) findViewById(R.id.aq_humd_banner);
 
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         temperature.setText(String.valueOf(temp) +" °C");
         humid.setText(String.valueOf(humd) + " %");
         tvoc.setText("tVOC \n"+ String.valueOf(voc) + " ppb");
+        pm25.setText("PM2.5 \n" +String.valueOf(pm) + " μg/m3");
         eCO2.setText("eCO2 \n" +String.valueOf(co2) + " ppm");
     }
 
