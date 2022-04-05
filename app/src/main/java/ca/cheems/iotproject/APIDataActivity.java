@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,13 +33,15 @@ public class APIDataActivity extends AppCompatActivity {
     private  String json="";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apidata);
 
+        spinner = (Spinner) findViewById(R.id.spiner);
         requestQueue = Volley.newRequestQueue(this);
         try {
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, city);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, city);
             spinner.setAdapter(arrayAdapter);
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -77,7 +80,8 @@ public class APIDataActivity extends AppCompatActivity {
     }
 
     private void RequestWeather(String namcity) {
-        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
             public void run() {
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://api.waqi.info/feed/" + namcity.toLowerCase() + "/?token=335c6bfed754d30c7a80d76cd33f15a76c0f15c1&fbclid=IwAR2RH7PBaTGKbNz5CBhMFL5743EHy9Hu4QifLGiXhkitCPZF86-5nZ150pc", new Response.Listener<String>() {
