@@ -5,20 +5,15 @@
       <map>
         <entry key="..\:/AirQuality/app/src/main/res/drawable-v24/bg_btn.xml" value="0.1935" />
         <entry key="..\:/AirQuality/app/src/main/res/drawable-v24/loginedittext_bg.xml" value="0.2545" />
+        <entry key="..\:/AirQuality/app/src/main/res/layout/activity_apidata.xml" value="0.4759963768115942" />
         <entry key="..\:/AirQuality/app/src/main/res/layout/activity_login.xml" value="0.27898550724637683" />
+        <entry key="..\:/AirQuality/app/src/main/res/layout/activity_main.xml" value="0.32472826086956524" />
+        <entry key="..\:/AirQuality/app/src/main/res/layout/activity_pm25.xml" value="0.25" />
         <entry key="..\:/AirQuality/app/src/main/res/layout/activity_register.xml" value="0.27898550724637683" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable-v24/loginedittext_bg.xml" value="0.244" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/background.xml" value="0.1695" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/background_top.xml" value="0.193" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/background_top_bad.xml" value="0.1715" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/background_top_good.xml" value="0.193" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/background_top_medium.xml" value="0.193" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_affect.xml" value="0.2695" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_affect_eco2.xml" value="0.2695" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_affect_tvoc.xml" value="0.16" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_co2.xml" value="0.1715" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_pm25.xml" value="0.1715" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_tvoc.xml" value="0.1715" />
+        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/button_affect_tvoc.xml" value="0.2695" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/default_button_pressed.xml" value="0.2695" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/default_button_seletor.xml" value="0.2695" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/defualt_button.xml" value="0.2695" />
@@ -27,7 +22,7 @@
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/drawable/stroke.xml" value="0.164" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_eco2.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_pm25.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_register.xml" value="0.33469202898550726" />
         <entry key="..\:/Users/HieuChu/StudioProjects/AirQuality/app/src/main/res/layout/activity_tvoc.xml" value="0.2975630611372381" />
