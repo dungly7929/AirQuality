@@ -3,13 +3,13 @@
     android:dither="true">
         <item
             android:state_window_focused="false"
-            android:drawable="@drawable/dust"/>
+            android:drawable="@drawable/city"/>
         <item
             android:state_pressed="true"
-            android:drawable="@drawable/dust_pressed"/>
+            android:drawable="@drawable/city_clicked"/>
         <item
             android:state_focused="true"
-            android:drawable="@drawable/dust_pressed"/>
+            android:drawable="@drawable/city_clicked"/>
         <item
-            android:drawable="@drawable/dust"/>
+            android:drawable="@drawable/city"/>
 </selector>

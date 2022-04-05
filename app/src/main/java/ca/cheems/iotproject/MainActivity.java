@@ -172,12 +172,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getID(){
-        pm25 = (Button) findViewById(R.id.pm25button);
+        pm25 = (Button) findViewById(R.id.citydata);
         tvoc = (Button) findViewById(R.id.tvocbutton);
         eCO2 = (Button) findViewById(R.id.eCO2button);
-        O3 = (Button) findViewById(R.id.pm03button);
         temp_pic = (ImageView) findViewById(R.id.temp_pic);
-        spinner =findViewById(R.id.spiner);
 
         //The face imageview will change according to the level of
         face =(ImageView) findViewById(R.id.face_indicator);
