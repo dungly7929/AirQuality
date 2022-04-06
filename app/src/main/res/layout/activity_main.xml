@@ -37,10 +37,10 @@
                             android:shadowDx="2"
                             android:shadowDy="2"
                             android:shadowRadius="5">
+
                             <View
-                                android:layout_width="1dp"
-                                android:layout_height="5dp"
-                                />
+                                android:layout_width="5dp"
+                                android:layout_height="1dp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -106,9 +106,9 @@
                                            android:textSize="30dp"
                                            android:layout_marginLeft="56dp"
                                            android:shadowColor="#000000"
-                                           android:shadowDx="2"
-                                           android:shadowDy="2"
-                                           android:shadowRadius="5">
+                                           android:shadowDx="3"
+                                           android:shadowDy="5"
+                                           android:shadowRadius="7">
                                        </TextView>
 
 
@@ -153,9 +153,10 @@
                                             android:layout_weight="1"
                                             android:layout_marginLeft="75dp"
                                             android:shadowColor="#000000"
-                                            android:shadowDx="2"
-                                            android:shadowDy="2"
-                                            android:shadowRadius="5">
+                                            android:shadowDx="3"
+                                            android:shadowDy="5"
+                                            android:shadowRadius="7"
+                                            >
                                         </TextView>
                                 </LinearLayout>
                             </LinearLayout>

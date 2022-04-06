@@ -48,7 +48,7 @@ public class APIDataActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spiner);
         requestQueue = Volley.newRequestQueue(this);
         try {
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, city);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.my_dropdown_item, city);
             spinner.setAdapter(arrayAdapter);
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

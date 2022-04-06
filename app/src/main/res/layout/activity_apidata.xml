@@ -16,7 +16,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp">
+        </View>
+        <LinearLayout
+            android:layout_width="406dp"
+            android:layout_height="174dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="5dp"
+                android:layout_height="1dp">
+            </View>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/sky_backgroud">
         <Spinner
             android:id="@+id/spiner"
             android:layout_marginBottom="10dp"
@@ -24,7 +40,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,33 +53,57 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <RadioButton
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="tVOC">
+                    android:buttonTint="#0CD7F1"
+                    android:shadowColor="#000000"
+                    android:shadowDx="3"
+                    android:shadowDy="5"
+                    android:shadowRadius="7"
+                    android:text="tVOC"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="O3"
+                    android:textColor="@color/white"
+                    android:shadowColor="#000000"
+                    android:buttonTint="#0CD7F1"
+                    android:textSize="18dp"
+                    android:shadowDx="3"
+                    android:shadowDy="5"
+                    android:shadowRadius="7">
                 </RadioButton>
 
                 <RadioButton
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="O3">
+                    android:text="PM2.5"
+                    android:textColor="@color/white"
+                    android:shadowColor="#000000"
+                    android:buttonTint="#0CD7F1"
+                    android:shadowDx="3"
+                    android:textSize="18dp"
+                    android:shadowDy="5"
+                    android:shadowRadius="7">
                 </RadioButton>
 
                 <RadioButton
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="PM2.5">
+                    android:text="CO2"
+                    android:textColor="@color/white"
+                    android:shadowColor="#000000"
+                    android:buttonTint="#0CD7F1"
+                    android:shadowDx="3"
+                    android:shadowDy="5"
+                    android:shadowRadius="7"
+                    android:textSize="18dp">
                 </RadioButton>
-
-                <RadioButton
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="CO2">
-                </RadioButton>
-                <View
-                    android:layout_width="5.5dp"
-                    android:layout_height="1dp">
-                </View>
             </RadioGroup>
         </LinearLayout>
 
@@ -99,14 +139,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/courier_prime_bold"
-                android:text="Tempe"
+                android:text="Temp"
                 android:textAlignment="center"
-                android:textColor="@color/white"
                 android:textSize="25dp"
+                android:textColor="@color/white"
                 android:shadowColor="#000000"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="5">
+                android:shadowDx="3"
+                android:shadowDy="5"
+                android:shadowRadius="7">
             </TextView>
             </LinearLayout>
 
@@ -142,9 +182,18 @@
                 android:shadowDy="2"
                 android:shadowRadius="5">
             </TextView>
-
+                </LinearLayout>
+             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+            </View>
             </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+        </View>
 
         <LinearLayout
             android:layout_width="match_parent"
