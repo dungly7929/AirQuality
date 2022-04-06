@@ -6,7 +6,6 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:background="@color/black"
-
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         style="@style/ThemeOverlay.AppCompat.Dark"
         android:layout_width="match_parent"
@@ -16,7 +15,4 @@
         android:layout_below="@id/toolbar"
         android:id="@+id/bartchart"
         android:layout_height="match_parent"/>
-
-
-
 </RelativeLayout>
