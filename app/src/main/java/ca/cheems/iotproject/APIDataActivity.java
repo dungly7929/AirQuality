@@ -76,14 +76,38 @@ public class APIDataActivity extends AppCompatActivity {
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+                {
                     RequestWeather(spinner.getSelectedItem().toString());
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
+                }
+            });
+
+            api_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId) {
+                        case R.id.api_tvocradio:
+                            api_showData.setText("tVOC = " + String.valueOf(voc) + " ppb");
+                            break;
+                        case R.id.api_o3radio:
+                            api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
+                            buildgraph("o3");
+                            break;
+                        case R.id.api_pm25radio:
+                            api_showData.setText("PM 2.5 level = " + String.valueOf(pm) + " μg/m3");
+                            buildgraph("pm25");
+                            break;
+                        case R.id.api_co2radio:
+                            api_showData.setText("eCO2 level = " + String.valueOf(co2) + " ppm");
+                            break;
+                        default:
+                            api_showData.setText("Please select data above to view current Air quality");
+                    }
                 }
             });
         } catch (Exception e) {
@@ -122,47 +146,32 @@ public class APIDataActivity extends AppCompatActivity {
                             o3 = j_temp.getJSONObject("o3").getDouble("v");
                             json = j2_new;
                             Log.d("CHECKED", j2_new);
-
-                            try {
-                                RadioButton radcheck = (RadioButton) api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
-                                if (radcheck.isChecked()) {
-                                    if (radcheck.getText().equals("tVOC")) {
+                            if (api_radioGroup.getCheckedRadioButtonId() != -1)
+                            {
+                                RadioButton checkedRadioButton = (RadioButton)api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
+                                switch (checkedRadioButton.getText().toString())
+                                {
+                                    case "tVOC":
                                         api_showData.setText("tVOC = " + String.valueOf(voc) + " ppb");
-                                    } else if (radcheck.getText().equals("O3")) {
+                                        break;
+                                    case "O3":
                                         api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
-                                    }
+                                        buildgraph("o3");
+                                    case "PM2.5":
+                                        api_showData.setText("PM 2.5 level = " + String.valueOf(pm) + " μg/m3");
+                                        buildgraph("pm25");
+                                    case "CO2":
+                                        api_showData.setText("eCO2 level = " + String.valueOf(co2) + " ppm");
+                                        break;
                                 }
-                            } catch (Exception e) {
-
                             }
-
-                            api_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                                @Override
-                                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                                    switch (checkedId) {
-                                        case R.id.api_tvocradio:
-                                            api_showData.setText("tVOC = " + String.valueOf(voc) + " ppb");
-                                            break;
-                                        case R.id.api_o3radio:
-                                            api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
-                                            buildgraph("o3");
-                                            break;
-                                        case R.id.api_pm25radio:
-                                            api_showData.setText("PM 2.5 level = " + String.valueOf(pm) + " μg/m3");
-                                            buildgraph("pm25");
-                                            break;
-                                        case R.id.api_co2radio:
-                                            api_showData.setText("eCO2 level = " + String.valueOf(co2) + " ppm");
-                                            break;
-                                        default:
-                                            api_showData.setText("Please select data above to view current Air quality");
-                                    }
-                                }
-                            });
 
                         } catch (JSONException e) {
 
                         }
+                          catch (Exception e){
+
+                          }
 
                     }
                 }, new Response.ErrorListener() {
