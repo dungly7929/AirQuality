@@ -43,12 +43,12 @@ public class APIDataActivity extends AppCompatActivity {
     Spinner spinner;
     RequestQueue requestQueue;
     String tokens = "335c6bfed754d30c7a80d76cd33f15a76c0f15c1&fbclid=IwAR2RH7PBaTGKbNz5CBhMFL5743EHy9Hu4QifLGiXhkitCPZF86-5nZ150pc";
-    String[] city = {"Toronto","Vancouver","Ottawa","Calgary","Montreal"};
-    double temp, humd, voc, pm, co2,o3;
-    String url ="https://api.waqi.info/feed/";
-    private  String json="";
+    String[] city = {"Toronto", "Vancouver", "Ottawa", "Calgary", "Montreal"};
+    double temp, humd, voc, pm, co2, o3;
+    String url = "https://api.waqi.info/feed/";
+    private String json = "";
     private SharedPreferences sharedPreferences;
-    TextView api_temp, api_humd,api_showData;
+    TextView api_temp, api_humd, api_showData;
     RadioGroup api_radioGroup;
 
     BarChart barChart;
@@ -58,15 +58,14 @@ public class APIDataActivity extends AppCompatActivity {
     ArrayList<ForcastDaily> arrayList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apidata);
 
         api_temp = findViewById(R.id.api_temp);
         api_humd = findViewById(R.id.api_humd);
         api_radioGroup = findViewById(R.id.api_radiogroup);
-        RadioButton checkedRadioButton =  (RadioButton)api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
+        RadioButton checkedRadioButton = (RadioButton) api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
         api_showData = findViewById(R.id.current_data);
         barChart = findViewById(R.id.barchart);
         spinner = (Spinner) findViewById(R.id.spiner);
@@ -78,7 +77,8 @@ public class APIDataActivity extends AppCompatActivity {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        RequestWeather(spinner.getSelectedItem().toString());
+
+                    RequestWeather(spinner.getSelectedItem().toString());
                 }
 
                 @Override
@@ -86,20 +86,15 @@ public class APIDataActivity extends AppCompatActivity {
 
                 }
             });
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
     }
 
 
     private void RequestWeather(String namcity) {
-        new Handler().postDelayed(new Runnable()
-        {
-            @Override
-            public void run() {
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://api.waqi.info/feed/" + namcity.toLowerCase() + "/?token=335c6bfed754d30c7a80d76cd33f15a76c0f15c1&fbclid=IwAR2RH7PBaTGKbNz5CBhMFL5743EHy9Hu4QifLGiXhkitCPZF86-5nZ150pc", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://api.waqi.info/feed/" + namcity.toLowerCase() + "/?token=335c6bfed754d30c7a80d76cd33f15a76c0f15c1&fbclid=IwAR2RH7PBaTGKbNz5CBhMFL5743EHy9Hu4QifLGiXhkitCPZF86-5nZ150pc",
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -114,7 +109,7 @@ public class APIDataActivity extends AppCompatActivity {
                             temp = j_temp.getJSONObject("t").getDouble("v");
                             api_temp.setText(String.valueOf(temp) + " °C");
                             humd = j_temp.getJSONObject("h").getDouble("v");
-                            api_humd.setText(String.valueOf(humd)+ " %");
+                            api_humd.setText(String.valueOf(humd) + " %");
 
                             voc = j_temp.getJSONObject("co").getDouble("v");
                             if (j_temp.has("pm25")) {
@@ -128,15 +123,25 @@ public class APIDataActivity extends AppCompatActivity {
                             json = j2_new;
                             Log.d("CHECKED", j2_new);
 
+                            try {
+                                RadioButton radcheck = (RadioButton) api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
+                                if (radcheck.isChecked()) {
+                                    if (radcheck.getText().equals("tVOC")) {
+                                        api_showData.setText("tVOC = " + String.valueOf(voc) + " ppb");
+                                    } else if (radcheck.getText().equals("O3")) {
+                                        api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
+                                    }
+                                }
+                            } catch (Exception e) {
 
+                            }
 
-                            api_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-                            {
+                            api_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                                    switch(checkedId){
+                                    switch (checkedId) {
                                         case R.id.api_tvocradio:
-                                            api_showData.setText("tVOC = " +String.valueOf(voc) + " ppb");
+                                            api_showData.setText("tVOC = " + String.valueOf(voc) + " ppb");
                                             break;
                                         case R.id.api_o3radio:
                                             api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
@@ -161,17 +166,14 @@ public class APIDataActivity extends AppCompatActivity {
 
                     }
                 }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-                    }
-                });
-                Volley.newRequestQueue(APIDataActivity.this).add(stringRequest);
             }
-        }, 1000);
-
-
+        });
+        Volley.newRequestQueue(APIDataActivity.this).add(stringRequest);
     }
+
     public void buildgraph(String graphName) {
 
         arrayList = new ArrayList<>();
@@ -180,20 +182,20 @@ public class APIDataActivity extends AppCompatActivity {
             JSONObject j_daily = new JSONObject(json);
             JSONObject j_all = new JSONObject(j_daily.get("daily").toString());
             JSONArray jsonArray = new JSONArray(j_all.get(graphName).toString());
-            for(int i = 0  ;i <jsonArray.length() ; i++){
-                JSONObject jsonObject_chart =  jsonArray.getJSONObject(i);
-                arrayList.add(new ForcastDaily(jsonObject_chart.getInt("avg"),jsonObject_chart.getString("day")));
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject_chart = jsonArray.getJSONObject(i);
+                arrayList.add(new ForcastDaily(jsonObject_chart.getInt("avg"), jsonObject_chart.getString("day")));
             }
-            for(int i = 0 ; i <arrayList.size();i++){
+            for (int i = 0; i < arrayList.size(); i++) {
                 ForcastDaily daily = arrayList.get(i);
-                barEntryArrayList.add(new BarEntry((i+1),daily.avg));
+                barEntryArrayList.add(new BarEntry((i + 1), daily.avg));
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        barDataSet = new BarDataSet(barEntryArrayList, "Compare " +graphName+ " in "  + arrayList.size() + " days");
+        barDataSet = new BarDataSet(barEntryArrayList, "Compare " + graphName + " in " + arrayList.size() + " days");
         barData = new BarData(barDataSet);
         barChart.setData(barData);
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
