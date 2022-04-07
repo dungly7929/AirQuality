@@ -15,7 +15,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/background3">
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp">
@@ -50,11 +51,13 @@
                     android:layout_height="1dp">
                 </View>
             <RadioGroup
+                android:id="@+id/api_radiogroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/api_tvocradio"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:buttonTint="#0CD7F1"
@@ -67,6 +70,7 @@
                     android:textSize="18dp"></RadioButton>
 
                 <RadioButton
+                    android:id="@+id/api_o3radio"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="O3"
@@ -80,6 +84,7 @@
                 </RadioButton>
 
                 <RadioButton
+                    android:id="@+id/api_pm25radio"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="PM2.5"
@@ -93,6 +98,7 @@
                 </RadioButton>
 
                 <RadioButton
+                    android:id="@+id/api_co2radio"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="CO2"
@@ -190,22 +196,29 @@
             </View>
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/current_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current data"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:paddingLeft="5dp">
+        </TextView>
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp">
         </View>
 
-        <LinearLayout
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.github.mikephil.charting.charts.BarChart
-                android:layout_width="match_parent"
-                android:layout_below="@id/toolbar"
-                android:id="@+id/bartchart"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
+            android:layout_height="634dp"
+            android:layout_below="@id/toolbar" />
     </LinearLayout>
-
-
-
 </ScrollView>

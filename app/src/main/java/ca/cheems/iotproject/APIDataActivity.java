@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +23,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class APIDataActivity extends AppCompatActivity {
 
@@ -34,7 +48,14 @@ public class APIDataActivity extends AppCompatActivity {
     String url ="https://api.waqi.info/feed/";
     private  String json="";
     private SharedPreferences sharedPreferences;
-    TextView api_temp, api_humd;
+    TextView api_temp, api_humd,api_showData;
+    RadioGroup api_radioGroup;
+
+    BarChart barChart;
+    BarDataSet barDataSet;
+    BarData barData;
+    ArrayList<BarEntry> barEntryArrayList;
+    ArrayList<ForcastDaily> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +65,10 @@ public class APIDataActivity extends AppCompatActivity {
 
         api_temp = findViewById(R.id.api_temp);
         api_humd = findViewById(R.id.api_humd);
-
+        api_radioGroup = findViewById(R.id.api_radiogroup);
+        RadioButton checkedRadioButton =  (RadioButton)api_radioGroup.findViewById(api_radioGroup.getCheckedRadioButtonId());
+        api_showData = findViewById(R.id.current_data);
+        barChart = findViewById(R.id.barchart);
         spinner = (Spinner) findViewById(R.id.spiner);
         requestQueue = Volley.newRequestQueue(this);
         try {
@@ -69,17 +93,6 @@ public class APIDataActivity extends AppCompatActivity {
         }
     }
 
-    public void openTVOCactivity(String json) {
-        Intent intent = new Intent(this, O3Activity.class);
-        intent.putExtra("JSON",json);
-        startActivity(intent);
-    }
-
-    public void openPM25activity(String json){
-        Intent intent = new Intent(this, PM25Activity.class);
-        intent.putExtra("JSON",json);
-        startActivity(intent);
-    }
 
     private void RequestWeather(String namcity) {
         new Handler().postDelayed(new Runnable()
@@ -114,6 +127,34 @@ public class APIDataActivity extends AppCompatActivity {
                             o3 = j_temp.getJSONObject("o3").getDouble("v");
                             json = j2_new;
                             Log.d("CHECKED", j2_new);
+
+
+
+                            api_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                            {
+                                @Override
+                                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                    switch(checkedId){
+                                        case R.id.api_tvocradio:
+                                            api_showData.setText("tVOC = " +String.valueOf(voc) + " ppb");
+                                            break;
+                                        case R.id.api_o3radio:
+                                            api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
+                                            buildgraph("o3");
+                                            break;
+                                        case R.id.api_pm25radio:
+                                            api_showData.setText("PM 2.5 level = " + String.valueOf(pm) + " μg/m3");
+                                            buildgraph("pm25");
+                                            break;
+                                        case R.id.api_co2radio:
+                                            api_showData.setText("eCO2 level = " + String.valueOf(co2) + " ppm");
+                                            break;
+                                        default:
+                                            api_showData.setText("Please select data above to view current Air quality");
+                                    }
+                                }
+                            });
+
                         } catch (JSONException e) {
 
                         }
@@ -131,4 +172,35 @@ public class APIDataActivity extends AppCompatActivity {
 
 
     }
+    public void buildgraph(String graphName) {
+
+        arrayList = new ArrayList<>();
+        barEntryArrayList = new ArrayList<>();
+        try {
+            JSONObject j_daily = new JSONObject(json);
+            JSONObject j_all = new JSONObject(j_daily.get("daily").toString());
+            JSONArray jsonArray = new JSONArray(j_all.get(graphName).toString());
+            for(int i = 0  ;i <jsonArray.length() ; i++){
+                JSONObject jsonObject_chart =  jsonArray.getJSONObject(i);
+                arrayList.add(new ForcastDaily(jsonObject_chart.getInt("avg"),jsonObject_chart.getString("day")));
+            }
+            for(int i = 0 ; i <arrayList.size();i++){
+                ForcastDaily daily = arrayList.get(i);
+                barEntryArrayList.add(new BarEntry((i+1),daily.avg));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        barDataSet = new BarDataSet(barEntryArrayList, "Compare " +graphName+ " in "  + arrayList.size() + " days");
+        barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barData.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+        barChart.getDescription().setEnabled(false);
+    }
+
+
 }

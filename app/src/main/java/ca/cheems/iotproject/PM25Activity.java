@@ -25,9 +25,8 @@ public class PM25Activity extends AppCompatActivity {
     BarDataSet barDataSet;
     BarData barData;
     ArrayList<BarEntry> barEntryArrayList;
-
     String json = "";
-   ArrayList<ForcastDaily> arrayList;
+    ArrayList<ForcastDaily> arrayList;
 
 
 
@@ -47,6 +46,7 @@ public class PM25Activity extends AppCompatActivity {
                 finish();
             }
         });
+
         Intent intent = getIntent();
         json = intent.getStringExtra("JSON");
         arrayList = new ArrayList<>();
@@ -64,17 +64,11 @@ public class PM25Activity extends AppCompatActivity {
               for(int i = 0 ; i <arrayList.size();i++){
                   ForcastDaily daily = arrayList.get(i);
                   barEntryArrayList.add(new BarEntry((i+1),daily.avg));
-
               }
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
         barDataSet = new BarDataSet(barEntryArrayList,"Compare PM25 in "+arrayList.size()+" days");
         barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -82,10 +76,6 @@ public class PM25Activity extends AppCompatActivity {
         barData.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
         barChart.getDescription().setEnabled(false);
-
-
-
-
 
     }
 
