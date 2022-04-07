@@ -157,7 +157,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="10dp"
+                android:layout_width="5.5dp"
                 android:layout_height="1dp">
             </View>
 
@@ -196,7 +196,10 @@
             </View>
             </LinearLayout>
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="19dp">
+        </View>
         <TextView
             android:id="@+id/current_data"
             android:layout_width="wrap_content"
@@ -214,11 +217,31 @@
             android:layout_width="match_parent"
             android:layout_height="20dp">
         </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="4.5dp"
+                    android:layout_height="1dp">
+                </View>
 
+            <LinearLayout
+    android:layout_width="401dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_top_good">
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="6dp">
+                </View>
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barchart"
-            android:layout_width="match_parent"
-            android:layout_height="634dp"
-            android:layout_below="@id/toolbar" />
+            android:layout_width="401dp"
+            android:layout_height="530dp"
+            android:layout_below="@id/toolbar"
+            android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

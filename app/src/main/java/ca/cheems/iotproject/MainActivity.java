@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                temp = dataSnapshot.child("temp").getValue(double.class);
                 humd = dataSnapshot.child("humid").getValue(double.class);
                 voc = dataSnapshot.child("tvoc").getValue(double.class);
-               pm = dataSnapshot.child("pm25").getValue(double.class);
                co2 = dataSnapshot.child("eco2").getValue(double.class);
 
                 aq_levels_indicators();
@@ -119,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
         temperature.setText(String.valueOf(temp) +" °C");
         humid.setText(String.valueOf(humd) + " %");
         tvoc.setText("tVOC \n"+ String.valueOf(voc) + " ppb");
-        pm25.setText("PM2.5 \n" +String.valueOf(pm) + " μg/m3");
         eCO2.setText("eCO2 \n" +String.valueOf(co2) + " ppm");
     }
 
