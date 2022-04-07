@@ -157,9 +157,11 @@ public class APIDataActivity extends AppCompatActivity {
                                     case "O3":
                                         api_showData.setText("O3 level = " + String.valueOf(o3) + " mmol/m2");
                                         buildgraph("o3");
+                                        break;
                                     case "PM2.5":
                                         api_showData.setText("PM 2.5 level = " + String.valueOf(pm) + " μg/m3");
                                         buildgraph("pm25");
+                                        break;
                                     case "CO2":
                                         api_showData.setText("eCO2 level = " + String.valueOf(co2) + " ppm");
                                         break;
